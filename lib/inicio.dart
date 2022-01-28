@@ -20,6 +20,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final user = TextEditingController();
   final password = TextEditingController();
+  var en_auditorio = false;
 
   static const routeName = '/login';
 
@@ -148,7 +149,7 @@ class _LoginState extends State<Login> {
       }
     }
 
-    if (ex == true) {
+    if (ex == true && en_auditorio == true) {
       Navigator.pushNamed(context, Bienvenida.routeName,
           arguments: Usuario(us));
       print('Bienvenido');
@@ -212,10 +213,12 @@ class _LoginState extends State<Login> {
     });
 
     Geofence.startListening(GeolocationEvent.entry, (entry) {
+      en_auditorio = true;
       scheduleNotification("Entry of a georegion", "Welcome to: ${entry.id}");
     });
 
     Geofence.startListening(GeolocationEvent.exit, (entry) {
+      en_auditorio = false;
       scheduleNotification("Exit of a georegion", "Byebye to: ${entry.id}");
     });
 
