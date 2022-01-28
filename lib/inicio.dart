@@ -137,8 +137,8 @@ class _LoginState extends State<Login> {
   }
 
   void getUser(String us) async {
-    var response =
-        await http.get(Uri.https('jsonplaceholder.typicode.com', 'users'));
+    var url = 'http://0ad6-186-66-181-202.ngrok.io/autenticar';
+    var response = await http.get(Uri.parse(url));
     var datos = jsonDecode(response.body);
     var ex = false;
 
