@@ -120,6 +120,8 @@ class _LoginState extends State<Login> {
     );
   }
 
+  /*
+
   getUserData() async {
     var response =
         await http.get(Uri.https('jsonplaceholder.typicode.com', 'users'));
@@ -134,9 +136,9 @@ class _LoginState extends State<Login> {
 
     print(usuarios.length);
     return usuarios;
-  }
+  }*/
 
-  void getUser(String us) async {
+  getUser(String us) async {
     var url = 'http://0ad6-186-66-181-202.ngrok.io/autenticar';
     var response = await http.get(Uri.parse(url));
     var datos = jsonDecode(response.body);
@@ -149,7 +151,7 @@ class _LoginState extends State<Login> {
       }
     }
 
-    if (ex == true && en_auditorio == true) {
+    if (ex == true) {
       Navigator.pushNamed(context, Bienvenida.routeName,
           arguments: Usuario(us));
       print('Bienvenido');
